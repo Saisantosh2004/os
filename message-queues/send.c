@@ -17,7 +17,10 @@ int main()
   message.mesg_type = 1; 
 
   printf("Write Data : "); 
-  fgets(message.mesg_text,MAX,stdin); 
+  if (fgets(message.mesg_text, MAX, stdin) == NULL) {
+    perror("fgets");
+    return 1; // Exit with an error
+  }
   msgsnd(msgid, &message, sizeof(message), 0);  
   printf("Data send is : %s \n", message.mesg_text); 
 

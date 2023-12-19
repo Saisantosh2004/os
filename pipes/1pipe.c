@@ -14,12 +14,12 @@ int main() {
     }
     
     printf("Writing to pipe - Message 1 is %s\n", writemessages[0]);
-    write(pipefds[1], writemessages[0], sizeof(writemessages[0]));
-    read(pipefds[0], readmessage, sizeof(readmessage));
+    int a=write(pipefds[1], writemessages[0], sizeof(writemessages[0]));
+    int b=read(pipefds[0], readmessage, sizeof(readmessage));
     printf("Reading from pipe – Message 1 is %s\n", readmessage);
     printf("Writing to pipe - Message 2 is %s\n", writemessages[0]);
-    write(pipefds[1], writemessages[1], sizeof(writemessages[0]));
-    read(pipefds[0], readmessage, sizeof(readmessage));
+    int c=write(pipefds[1], writemessages[1], sizeof(writemessages[0]));
+    int d=read(pipefds[0], readmessage, sizeof(readmessage));
     printf("Reading from pipe – Message 2 is %s\n", readmessage);
     return 0;
 }
